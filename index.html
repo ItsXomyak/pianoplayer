@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>PianoPlayer</title>
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<div class="container">
+			<header>
+				<h1>PianoPlayer</h1>
+				<div class="mode-controls">
+					<button id="interactiveMode" class="active">Interactive Mode</button>
+					<button id="preparedMode">Prepared Mode</button>
+				</div>
+			</header>
+			<div class="controls">
+				<button id="record">Record</button>
+				<button id="stopRecord" disabled>Stop Recording</button>
+				<button id="download" disabled>Download JSON</button>
+				<span class="recording-indicator" id="recordingIndicator"></span>
+			</div>
+			<div class="piano" id="piano">
+				<!-- Белые клавиши -->
+				<div class="key white" data-note="C3"></div>
+				<div class="key white" data-note="D3"></div>
+				<div class="key white" data-note="E3"></div>
+				<div class="key white" data-note="F3"></div>
+				<div class="key white" data-note="G3"></div>
+				<div class="key white" data-note="A3"></div>
+				<div class="key white" data-note="B3"></div>
+				<div class="key white" data-note="C4"></div>
+				<div class="key white" data-note="D4"></div>
+				<div class="key white" data-note="E4"></div>
+				<div class="key white" data-note="F4"></div>
+				<div class="key white" data-note="G4"></div>
+				<div class="key white" data-note="A4"></div>
+				<div class="key white" data-note="B4"></div>
+				<div class="key white" data-note="C5"></div>
+				<div class="key white" data-note="D5"></div>
+				<div class="key white" data-note="E5"></div>
+				<!-- Черные клавиши -->
+				<div class="key black" data-note="C#3"></div>
+				<div class="key black" data-note="D#3"></div>
+				<div class="key black" data-note="F#3"></div>
+				<div class="key black" data-note="G#3"></div>
+				<div class="key black" data-note="A#3"></div>
+				<div class="key black" data-note="C#4"></div>
+				<div class="key black" data-note="D#4"></div>
+				<div class="key black" data-note="F#4"></div>
+				<div class="key black" data-note="G#4"></div>
+				<div class="key black" data-note="A#4"></div>
+				<div class="key black" data-note="C#5"></div>
+			</div>
+			<div class="prepared-controls" id="preparedControls">
+				<input type="file" id="loadSong" accept=".json" />
+				<button id="play">Play</button>
+				<button id="pause" disabled>Pause</button>
+				<button id="stop">Stop</button>
+				<label
+					>Speed:
+					<input
+						type="range"
+						id="playbackSpeed"
+						min="0.5"
+						max="2"
+						step="0.1"
+						value="1"
+					/>
+				</label>
+			</div>
+			<div class="progress-bar" id="progressBar">
+				<div class="progress" id="progress"></div>
+			</div>
+			<div class="upcoming-notes" id="upcomingNotes"></div>
+		</div>
+
+		<script src="script.js"></script>
+	</body>
+</html>

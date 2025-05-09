@@ -1,0 +1,317 @@
+body {
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+	margin: 0;
+	padding: 20px;
+	display: flex;
+	justify-content: center;
+	min-height: 100vh;
+	color: #fff;
+}
+
+.container {
+	max-width: 1200px;
+	width: 100%;
+	text-align: center;
+	padding: 20px;
+	background: rgba(255, 255, 255, 0.05);
+	backdrop-filter: blur(10px);
+	border-radius: 20px;
+	box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+header {
+	margin-bottom: 30px;
+}
+
+h1 {
+	font-size: 2.5rem;
+	color: #fff;
+	text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+	margin-bottom: 20px;
+}
+
+.mode-controls {
+	display: flex;
+	gap: 15px;
+	justify-content: center;
+	margin-bottom: 20px;
+}
+
+.mode-controls button {
+	padding: 12px 25px;
+	font-size: 1.1rem;
+	border: none;
+	border-radius: 10px;
+	cursor: pointer;
+	background: linear-gradient(145deg, #2a2a4a, #1a1a2e);
+	color: #fff;
+	box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2),
+		-5px -5px 10px rgba(255, 255, 255, 0.05);
+	transition: all 0.3s ease;
+}
+
+.mode-controls button.active {
+	background: linear-gradient(145deg, #4a4a6a, #2a2a4a);
+	box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.2),
+		inset -5px -5px 10px rgba(255, 255, 255, 0.05);
+}
+
+.controls {
+	display: flex;
+	gap: 15px;
+	justify-content: center;
+	margin-bottom: 30px;
+	flex-wrap: wrap;
+}
+
+button {
+	padding: 12px 25px;
+	font-size: 1.1rem;
+	border: none;
+	border-radius: 10px;
+	cursor: pointer;
+	background: linear-gradient(145deg, #2a2a4a, #1a1a2e);
+	color: #fff;
+	box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2),
+		-5px -5px 10px rgba(255, 255, 255, 0.05);
+	transition: all 0.3s ease;
+}
+
+button:hover:not(:disabled) {
+	transform: translateY(-2px);
+	box-shadow: 7px 7px 15px rgba(0, 0, 0, 0.3),
+		-7px -7px 15px rgba(255, 255, 255, 0.07);
+}
+
+button:disabled {
+	background: #2a2a4a;
+	color: #666;
+	cursor: not-allowed;
+	box-shadow: none;
+}
+
+.recording-indicator {
+	display: none;
+	width: 15px;
+	height: 15px;
+	background: linear-gradient(145deg, #ff4444, #cc0000);
+	border-radius: 50%;
+	margin: 10px;
+	animation: blink 1s infinite;
+	box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+}
+
+@keyframes blink {
+	50% {
+		opacity: 0.5;
+		box-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
+	}
+}
+
+.piano {
+	display: flex;
+	position: relative;
+	max-width: 1000px;
+	height: 250px;
+	background: linear-gradient(145deg, #2a2a4a, #1a1a2e);
+	border: 3px solid #3a3a5a;
+	border-radius: 15px;
+	margin: 0 auto;
+	padding: 10px;
+	user-select: none;
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.key {
+	border: 1px solid #3a3a5a;
+	border-radius: 0 0 8px 8px;
+	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+	transition: all 0.1s ease;
+}
+
+.key.white {
+	flex: 1;
+	height: 100%;
+	background: linear-gradient(145deg, #ffffff, #f0f0f0);
+	margin: 0 2px;
+}
+
+.key.black {
+	position: absolute;
+	width: 35px;
+	height: 65%;
+	background: linear-gradient(145deg, #2a2a4a, #000000);
+	z-index: 2;
+	border-radius: 0 0 5px 5px;
+}
+
+.key.active {
+	background: #ffd700;
+	transform: translateY(3px);
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.key.black.active {
+	background: #ffaa00;
+}
+
+/* Позиции черных клавиш */
+.key.black[data-note='C#3'] {
+	left: 4%;
+}
+.key.black[data-note='D#3'] {
+	left: 11%;
+}
+.key.black[data-note='F#3'] {
+	left: 25%;
+}
+.key.black[data-note='G#3'] {
+	left: 32%;
+}
+.key.black[data-note='A#3'] {
+	left: 39%;
+}
+.key.black[data-note='C#4'] {
+	left: 53%;
+}
+.key.black[data-note='D#4'] {
+	left: 60%;
+}
+.key.black[data-note='F#4'] {
+	left: 74%;
+}
+.key.black[data-note='G#4'] {
+	left: 81%;
+}
+.key.black[data-note='A#4'] {
+	left: 88%;
+}
+.key.black[data-note='C#5'] {
+	left: 95%;
+}
+.key.black[data-note='D#5'] {
+	left: 102%;
+}
+
+.prepared-controls {
+	display: none;
+	margin: 30px 0;
+	gap: 15px;
+	justify-content: center;
+	flex-wrap: wrap;
+	padding: 20px;
+	background: rgba(255, 255, 255, 0.05);
+	border-radius: 15px;
+}
+
+.prepared-controls input[type='file'] {
+	padding: 12px;
+	background: rgba(255, 255, 255, 0.1);
+	border-radius: 10px;
+	color: #fff;
+}
+
+.prepared-controls input[type='range'] {
+	width: 200px;
+	height: 8px;
+	-webkit-appearance: none;
+	background: linear-gradient(145deg, #2a2a4a, #1a1a2e);
+	border-radius: 4px;
+	outline: none;
+}
+
+.prepared-controls input[type='range']::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	width: 20px;
+	height: 20px;
+	background: #fff;
+	border-radius: 50%;
+	cursor: pointer;
+	box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.progress-bar {
+	display: none;
+	max-width: 1000px;
+	height: 12px;
+	background: rgba(255, 255, 255, 0.1);
+	margin: 20px auto;
+	border-radius: 6px;
+	overflow: hidden;
+}
+
+.progress {
+	width: 0;
+	height: 100%;
+	background: linear-gradient(90deg, #4a90e2, #67b26f);
+	border-radius: 6px;
+	transition: width 0.1s linear;
+}
+
+.upcoming-notes {
+	display: none;
+	max-width: 1000px;
+	height: 60px;
+	background: rgba(255, 255, 255, 0.05);
+	margin: 20px auto;
+	border-radius: 10px;
+	position: relative;
+	overflow: hidden;
+}
+
+.note {
+	position: absolute;
+	height: 25px;
+	background: linear-gradient(90deg, #4a90e2, #67b26f);
+	border-radius: 5px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+	.container {
+		padding: 10px;
+	}
+
+	.piano {
+		height: 200px;
+	}
+
+	.key.white {
+		margin: 0 1px;
+	}
+
+	.key.black {
+		width: 25px;
+		height: 60%;
+	}
+
+	button {
+		padding: 10px 20px;
+		font-size: 1rem;
+	}
+
+	h1 {
+		font-size: 2rem;
+	}
+}
+
+@media (max-width: 480px) {
+	.piano {
+		height: 150px;
+	}
+
+	.key.black {
+		width: 20px;
+		height: 55%;
+	}
+
+	button {
+		padding: 8px 16px;
+		font-size: 0.9rem;
+	}
+
+	h1 {
+		font-size: 1.5rem;
+	}
+}
